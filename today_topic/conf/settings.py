@@ -78,7 +78,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'topic_db',
-    }
+        'OPTIONS': {
+            'read_default_file': '/etc/mysql/conf.d/default.cnf',
+        },
+    },
 }
 
 
