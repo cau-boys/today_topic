@@ -1,5 +1,13 @@
 {% extends "today_topic/base.html" %}
 
 {% block contents %}
-    Hello!
+    {% for topic in topics %}
+        <div>
+            <b>{{ topic.title }}</b>
+        </div>
+        <div>
+            {{ topic.content }}
+        </div>
+        <hr>
+    {% endfor %}
 {% endblock %}
