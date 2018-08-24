@@ -1,4 +1,5 @@
 from django.views.generic.base import TemplateView
+from today_topic.utils import get_topics
 
 
 class IndexView(TemplateView):
