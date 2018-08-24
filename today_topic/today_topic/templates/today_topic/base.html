@@ -13,14 +13,41 @@
 <body>
 <header>
     {% block nav %}
-        <!-- all | story | entertainment | politics | economics | society | it | world] -->
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'site:index' category='all' %}">All</a>
+                </li>
+                <li>
+                    <a href="{% url 'site:index' category='story' %}">Story</a>
+                </li>
+                <li>
+                    <a href="{% url 'site:index' category='entertainment' %}">Entertainment</a>
+                </li>
+                <li>
+                    <a href="{% url 'site:index' category='politics' %}">Politics</a>
+                </li>
+                <li>
+                    <a href="{% url 'site:index' category='economics' %}">Economics</a>
+                </li>
+                <li>
+                    <a href="{% url 'site:index' category='society' %}">Society</a>
+                </li>
+                <li>
+                    <a href="{% url 'site:index' category='it' %}">IT</a>
+                </li>
+                <li>
+                    <a href="{% url 'site:index' category='world' %}">World</a>
+                </li>
+            </ul>
+        </nav>
     {% endblock %}
 </header>
 <main>
     {% block contents %}{% endblock %}
     {% block footer %}
         <!-- FOOTER -->
-            <hr>
+        <hr>
         <footer class="container mt-3">
             <!-- Copyright -->
             <div class="text-center py-3">© 2018 Copyright:
