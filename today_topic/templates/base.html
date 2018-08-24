@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}농수산물 시세 알리미{% endblock %}</title>
+    <title>{% block title %}오늘의 토픽{% endblock %}</title>
 
     {% block css %}
         <!-- CSS-->
         {% load staticfiles %}
-        <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}"/>
     {% endblock %}
 </head>
 <body>
@@ -23,13 +23,17 @@
         <footer class="container mt-3">
             <!-- Copyright -->
             <div class="text-center py-3">© 2018 Copyright:
-                <a href="https://github.com/cau-boys/agro_fishery_products">CAU-Boys</a>
+                <a href="https://github.com/cau-boys/today_topic">CAU-Boys</a>
             </div>
             <!-- /Copyright -->
         </footer><!-- /FOOTER -->
     {% endblock %}
 </main>
 
-{% block js %}<!-- Javascript -->{% endblock %}
+{% block js %}
+    <!-- Javascript -->
+    {% load staticfiles %}
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+{% endblock %}
 </body>
 </html>
