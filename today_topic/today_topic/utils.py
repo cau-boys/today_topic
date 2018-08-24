@@ -1,6 +1,8 @@
-import json, requests
+import json
+import requests
 
 
+# get topic lists
 def get_topics(count, category):
     # json request
     url = 'http://api.datamixi.com/datamixiApi/topictoday'
