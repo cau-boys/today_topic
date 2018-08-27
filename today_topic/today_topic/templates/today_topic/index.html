@@ -32,84 +32,88 @@
             <div class="row text-center">
                 <div class="col-md-3 category_item">
                 <span class="fa-stack fa-4x category_icon">
-                    <a class="category_link" href="{% url 'site:index' category='all' %}">
+                    <a class="category_link" href="{% url 'site:detail' category='all' %}">
                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
                         <i class="fas fa-home fa-stack-1x fa-inverse"></i>
                     </a>
                 </span>
-                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='all' %}">토픽 홈</a></h4>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:detail' category='all' %}">모든 토픽</a></h4>
                 </div>
                 <div class="col-md-3 category_item">
                 <span class="fa-stack fa-4x category_icon">
-                    <a class="category_link" href="{% url 'site:index' category='entertainment' %}">
+                    <a class="category_link" href="{% url 'site:detail' category='entertainment' %}">
                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
                         <i class="fas fa-grin-squint fa-stack-1x fa-inverse"></i>
                     </a>
                 </span>
-                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='entertainment' %}">엔터테인먼트</a></h4>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:detail' category='entertainment' %}">엔터테인먼트</a></h4>
                 </div>
                 <div class="col-md-3 category_item">
                 <span class="fa-stack fa-4x category_icon">
-                    <a class="category_link" href="{% url 'site:index' category='politics' %}">
+                    <a class="category_link" href="{% url 'site:detail' category='politics' %}">
                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
                         <i class="fas fa-balance-scale fa-stack-1x fa-inverse"></i>
                     </a>
                 </span>
-                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='politics' %}">정치</a></h4>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:detail' category='politics' %}">정치</a></h4>
                 </div>
                 <div class="col-md-3 category_item">
                 <span class="fa-stack fa-4x category_icon">
-                    <a class="category_link" href="{% url 'site:index' category='economics' %}">
+                    <a class="category_link" href="{% url 'site:detail' category='economics' %}">
                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
                         <i class="fas fa-hand-holding-usd fa-stack-1x fa-inverse"></i>
                     </a>
                 </span>
-                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='economics' %}">경제</a></h4>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:detail' category='economics' %}">경제</a></h4>
                 </div>
                 <div class="col-md-3 category_item">
                 <span class="fa-stack fa-4x category_icon">
-                    <a class="category_link" href="{% url 'site:index' category='society' %}">
+                    <a class="category_link" href="{% url 'site:detail' category='society' %}">
                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
                         <i class="fas fa-people-carry fa-stack-1x fa-inverse"></i>
                     </a>
                 </span>
-                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='society' %}">사회</a></h4>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:detail' category='society' %}">사회</a></h4>
                 </div>
                 <div class="col-md-3 category_item">
                 <span class="fa-stack fa-4x category_icon">
-                    <a class="category_link" href="{% url 'site:index' category='it' %}">
+                    <a class="category_link" href="{% url 'site:detail' category='it' %}">
                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
                         <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
                     </a>
                 </span>
-                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='it' %}">IT</a></h4>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:detail' category='it' %}">IT</a></h4>
                 </div>
                 <div class="col-md-3 category_item">
                 <span class="fa-stack fa-4x category_icon">
-                    <a class="category_link" href="{% url 'site:index' category='world' %}">
+                    <a class="category_link" href="{% url 'site:detail' category='world' %}">
                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
                         <i class="fas fa-globe-americas fa-stack-1x fa-inverse"></i>
                     </a>
                 </span>
-                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='world' %}">세계</a></h4>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:detail' category='world' %}">세계</a></h4>
                 </div>
             </div>
         </div>
     </section><!-- /Category -->
 
     <!-- Topics -->
-    <section id="topics">
-        {% for topic in topics %}
-            <hr>
-            <div class="topic">
-                <div class="topic-title">{{ topic.title }}</div>
-                <div class="topic-content">{{ topic.content }}</div>
-                <br>
-                <a class="pl-3 font-weight-bold js-scroll-trigger" href="#page-top">페이지 상단으로</a>
-            </div>
-        {% endfor %}
-    </section><!-- /Topics -->
-
+    {% if topics is not None %}
+        <section id="topics">
+            {% for topic in topics %}
+                <hr>
+                <div class="topic">
+                    <div class="topic-title">{{ topic.title }}</div>
+                    <div class="topic-content">{{ topic.content }}</div>
+                    <br>
+                    <a class="pl-3 font-weight-bold js-scroll-trigger" href="#page-top">페이지 상단으로</a>
+                </div>
+            {% endfor %}
+        </section><!-- /Topics -->
+        <script>
+            location.href='#topics';
+        </script>
+    {% endif %}
     {% block modal %}
         <!-- Plus Friend Modal -->
         <div class="modal fade" id="plus-friend-modal" tabindex="-1"
