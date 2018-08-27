@@ -18,6 +18,8 @@ section{
 
 #topics {
     margin: 7rem;
+    margin-top: 0rem;
+    padding-top: 5rem;
 }
 
 .topic {
@@ -26,9 +28,12 @@ section{
 }
 
 .topic-title{
-    font-size:1.8rem;
+    font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
 
+.topic-content{
+    font-size: 1.1rem;
 }
