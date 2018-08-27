@@ -37,3 +37,8 @@ section{
 .topic-content{
     font-size: 1.1rem;
 }
+
+#plus-friend-modal-box{
+    width: 25rem;
+    padding: 1rem;
+}

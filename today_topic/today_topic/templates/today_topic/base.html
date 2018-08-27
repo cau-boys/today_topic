@@ -22,33 +22,32 @@
 </head>
 <body id="page-top">
 <header>
-    {% block nav %}
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">Today's Topic</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#page-top">홈</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#category">오늘의 주요 토픽</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#">구독하기</a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Today's Topic</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#page-top">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#category">오늘의 주요 토픽</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" href="#plus-friend-modal">플러스친구 추가하기</a>
+                    </li>
+                </ul>
             </div>
-        </nav><!-- /Navigation -->
-    {% endblock %}
+        </div>
+    </nav><!-- /Navigation -->
+
     {% block header %}{% endblock %}
     {% block content %}{% endblock %}
 </header>
@@ -91,6 +90,7 @@
             </div>
         </footer><!-- /Footer -->
     {% endblock %}
+    {% block modal %}{% endblock %}
 </main>
 
 {% block js %}
