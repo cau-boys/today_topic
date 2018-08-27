@@ -1,0 +1,17 @@
+section{
+    padding-top: 6rem;
+    padding-bottom: 1rem;
+}
+
+.category_item{
+    margin-bottom: 2rem;
+}
+
+.category_icon{
+    margin-bottom: 1rem;
+}
+
+.category_link{
+    color: black;
+    text-decoration: none !important;
+}
