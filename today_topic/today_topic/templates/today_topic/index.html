@@ -1,13 +1,117 @@
 {% extends "today_topic/base.html" %}
 
+{% block css %}
+    {{ block.super }}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/index_style.css" %}">
+{% endblock %}
+
+{% block header %}
+    <!-- Header -->
+    <header class="masthead">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-heading text-uppercase">오늘의 토픽</div>
+                <div class="intro-lead-in">오늘의 주요 뉴스를 빠르게 확인해보세요!</div>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">구독하러 가기</a>
+            </div>
+        </div>
+    </header><!-- /Header -->
+{% endblock %}
+
 {% block contents %}
-    {% for topic in topics %}
-        <div>
-            <b>{{ topic.title }}</b>
+    <!-- Category -->
+    <section id="category">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">오늘의 주요 토픽 리스트</h2>
+                    <h3 class="section-subheading text-muted" id="currentTime"></h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-3 category_item">
+                <span class="fa-stack fa-4x category_icon">
+                    <a class="category_link" href="{% url 'site:index' category='all' %}">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-home fa-stack-1x fa-inverse"></i>
+                    </a>
+                </span>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='all' %}">토픽 홈</a></h4>
+                </div>
+                <div class="col-md-3 category_item">
+                <span class="fa-stack fa-4x category_icon">
+                    <a class="category_link" href="{% url 'site:index' category='entertainment' %}">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-grin-squint fa-stack-1x fa-inverse"></i>
+                    </a>
+                </span>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='entertainment' %}">엔터테인먼트</a></h4>
+                </div>
+                <div class="col-md-3 category_item">
+                <span class="fa-stack fa-4x category_icon">
+                    <a class="category_link" href="{% url 'site:index' category='politics' %}">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-balance-scale fa-stack-1x fa-inverse"></i>
+                    </a>
+                </span>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='politics' %}">정치</a></h4>
+                </div>
+                <div class="col-md-3 category_item">
+                <span class="fa-stack fa-4x category_icon">
+                    <a class="category_link" href="{% url 'site:index' category='economics' %}">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-hand-holding-usd fa-stack-1x fa-inverse"></i>
+                    </a>
+                </span>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='economics' %}">경제</a></h4>
+                </div>
+                <div class="col-md-3 category_item">
+                <span class="fa-stack fa-4x category_icon">
+                    <a class="category_link" href="{% url 'site:index' category='society' %}">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-people-carry fa-stack-1x fa-inverse"></i>
+                    </a>
+                </span>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='society' %}">사회</a></h4>
+                </div>
+                <div class="col-md-3 category_item">
+                <span class="fa-stack fa-4x category_icon">
+                    <a class="category_link" href="{% url 'site:index' category='it' %}">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                    </a>
+                </span>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='it' %}">IT</a></h4>
+                </div>
+                <div class="col-md-3 category_item">
+                <span class="fa-stack fa-4x category_icon">
+                    <a class="category_link" href="{% url 'site:index' category='world' %}">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-globe-americas fa-stack-1x fa-inverse"></i>
+                    </a>
+                </span>
+                    <h4 class="service-heading"><a class="category_link" href="{% url 'site:index' category='world' %}">세계</a></h4>
+                </div>
+            </div>
         </div>
-        <div>
-            {{ topic.content }}
-        </div>
-        <hr>
-    {% endfor %}
+    </section><!-- /Category -->
+
+    <!-- Topics -->
+    <section id="topics">
+        {% for topic in topics %}
+            <hr>
+            <div class="topic">
+                <div class="topic-title">{{ topic.title }}</div>
+                <div>{{ topic.content }}</div>
+            </div>
+        {% endfor %}
+    </section><!-- /Topics -->
+
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    {% load staticfiles %}
+    <script src="{% static "js/index.js" %}"></script>
 {% endblock %}
