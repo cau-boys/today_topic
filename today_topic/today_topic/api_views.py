@@ -1,5 +1,6 @@
 from django.http.response import JsonResponse
 from today_topic.utils import get_topics, trim_topics
+from django.views.decorators.csrf import csrf_exempt
 import json
 
 def keyboard(request):
