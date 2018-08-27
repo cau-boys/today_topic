@@ -56,15 +56,41 @@
 <main>
     {% block contents %}{% endblock %}
     {% block footer %}
-        <!-- FOOTER -->
         <hr>
-        <footer class="container mt-3">
-            <!-- Copyright -->
-            <div class="text-center py-3">© 2018 Copyright:
-                <a href="https://github.com/cau-boys/today_topic">CAU-Boys</a>
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <!-- Icons -->
+                        <ul class="list-inline social-buttons mb-2">
+                            <!-- Facebook -->
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <!-- GitHub -->
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </li>
+                            <!-- LinkedIn -->
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </li>
+                        </ul><!-- /Icons -->
+                        <!-- Copyright -->
+                        <p class="copyright text-muted">
+                            Copyright 2018 &copy; <a href="https://github.com/cau-boys/today_topic">CAU-Boys</a>
+                        </p><!-- /Copyright -->
+                    </div>
+                </div>
             </div>
-            <!-- /Copyright -->
-        </footer><!-- /FOOTER -->
+        </footer><!-- /Footer -->
     {% endblock %}
 </main>
 
