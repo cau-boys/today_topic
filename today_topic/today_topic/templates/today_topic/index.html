@@ -100,13 +100,11 @@
     <!-- Topics -->
     <section id="topics">
         {% for topic in topics %}
-            <div>
-                <b>{{ topic.title }}</b>
-            </div>
-            <div>
-                {{ topic.content }}
-            </div>
             <hr>
+            <div class="topic">
+                <div class="topic-title">{{ topic.title }}</div>
+                <div>{{ topic.content }}</div>
+            </div>
         {% endfor %}
     </section><!-- /Topics -->
 
