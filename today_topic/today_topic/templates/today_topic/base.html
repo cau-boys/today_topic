@@ -5,9 +5,19 @@
     <title>{% block title %}오늘의 토픽{% endblock %}</title>
 
     {% block css %}
-        <!-- CSS-->
         {% load staticfiles %}
-        <link rel="stylesheet" type="text/css" href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}"/>
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" type="text/css" href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}">
+
+        <!-- Custom fonts for this template -->
+        <link rel="stylesheet" type="text/css" href="{% static "vendor/fontawesome-free/css/all.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+        <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Kaushan+Script'>
+        <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic'>
+        <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'>
+
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" type="text/css" href="{% static "css/agency.min.css" %}">
     {% endblock %}
 </head>
 <body>
@@ -59,9 +69,16 @@
 </main>
 
 {% block js %}
-    <!-- Javascript -->
     {% load staticfiles %}
-    <script src="{% static "vendor/bootstrap/js/bootstrap.min.js" %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static "vendor/jquery/jquery.min.js" %}"></script>
+    <script src="{% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static "vendor/jquery-easing/jquery.easing.min.js" %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static "js/agency.js" %}"></script>
 {% endblock %}
 </body>
 </html>
