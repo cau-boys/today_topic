@@ -41,7 +41,7 @@
                         <a class="nav-link js-scroll-trigger" href="#category">오늘의 주요 토픽</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="modal" href="#plus-friend-modal">플러스친구 추가하기</a>
+                        <a class="nav-link" href="javascript:addPlusFriend()">플러스친구 추가하기</a>
                     </li>
                 </ul>
             </div>
@@ -90,7 +90,6 @@
             </div>
         </footer><!-- /Footer -->
     {% endblock %}
-    {% block modal %}{% endblock %}
 </main>
 
 {% block js %}
@@ -104,6 +103,10 @@
 
     <!-- Custom scripts for this template -->
     <script src="{% static "js/agency.js" %}"></script>
+
+    <!-- Kakao Plus Friends API -->
+    <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="{% static "js/kakao_api.js" %}"></script>
 {% endblock %}
 </body>
 </html>

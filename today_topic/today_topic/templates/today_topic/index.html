@@ -13,7 +13,7 @@
             <div class="intro-text">
                 <div class="intro-heading text-uppercase">오늘의 토픽</div>
                 <div class="intro-lead-in">카카오톡에서도 오늘의 주요 뉴스를 확인해보세요!</div>
-                <a class="btn btn-primary btn-xl text-uppercase" data-toggle="modal" href="#plus-friend-modal">플러스친구 추가하기</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="javascript:addPlusFriend()">플러스친구 추가하기</a>
             </div>
         </div>
     </header><!-- /Header -->
@@ -114,30 +114,6 @@
             location.href='#topics';
         </script>
     {% endif %}
-    {% block modal %}
-        <!-- Plus Friend Modal -->
-        <div class="modal fade" id="plus-friend-modal" tabindex="-1"
-             role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content mx-auto" id="plus-friend-modal-box">
-                    <div class="modal-body">
-                        <!-- Project Details Go Here -->
-                        <h2 class="text-uppercase">플러스친구 추가하기</h2>
-                        <p class="item-intro text-muted">카카오톡에서 더 빠르게 오늘의 토픽을 접해보세요!</p>
-                        <p><a href="http://pf.kakao.com/주소">http://pf.kakao.com/주소</a></p>
-
-                        <!-- close button -->
-                        <button class="btn btn-primary fa-pull-right" data-dismiss="modal" type="button">
-                            <span class="mr-1">
-                                창 닫기
-                            </span>
-                            <i class="fas fa-times"></i>
-                        </button><!-- /close button -->
-                    </div>
-                </div>
-            </div>
-        </div><!-- /Plus Friend Modal -->
-    {% endblock %}
 {% endblock %}
 
 {% block js %}
