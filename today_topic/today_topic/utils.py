@@ -27,6 +27,8 @@ def get_topics(count, category):
 
     return topics
 
+
+# trim topic string
 def trim_topics(topics):
     response_data = '인공지능기반 실시간 트랜드 TOP 3'
     # 먼저 제목리스트를 보여줌
