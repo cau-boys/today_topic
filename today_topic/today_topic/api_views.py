@@ -18,7 +18,7 @@ def message(request):
     request_json = json.loads(request_law)
     subject_kor = request_json['content']
 
-    num_of_topic = 3
+    num_of_topic = 5
 
     if subject_kor == '모든토픽':
         subject_eng = 'all'
@@ -41,7 +41,11 @@ def message(request):
     topics_for_response = trim_topics(topics)
 
     return JsonResponse({
-        'message': {'text': topics_for_response},
+        'message': {'text': topics_for_response,
+	    "message_button": {
+      	    "label": "웹으로 보기",
+      	    "url": "http://13.209.97.110/site/" }      
+        },
         'keyboard': {
             'type': 'buttons',
             'buttons': ['모든토픽', '엔터테이먼트', '정치', '경제', '사회', 'IT', '세계']
