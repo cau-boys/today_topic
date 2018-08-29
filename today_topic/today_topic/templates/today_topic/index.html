@@ -97,23 +97,35 @@
         </div>
     </section><!-- /Category -->
 
-    <!-- Topics -->
     {% if topics is not None %}
-        <section id="topics">
+        <!-- Topic list -->
+        <section id="topic-list">
+            <div id="topic-list-title">토픽 목록</div>
             {% for topic in topics %}
                 <hr>
-                <div class="topic">
+                <a class="js-scroll-trigger topic-list-content" href="#title_{{ forloop.counter }}">{{ topic.title }}</a>
+            {% endfor %}
+            <hr>
+        </section><!-- /Topic list -->
+
+        <!-- Topics -->
+        <section id="topics">
+            {% for topic in topics %}
+                <div class="topic" id="title_{{ forloop.counter }}">
                     <div class="topic-title">{{ topic.title }}</div>
                     <div class="topic-content pl-2 pb-3">{{ topic.date }}</div>
                     <div class="topic-content">{{ topic.content_html | safe }}</div>
                     <br>
-                    <a class="topic-content pl-3 font-weight-bold js-scroll-trigger" href="#page-top">페이지 상단으로</a>
+                    <a class="topic-content pl-3 font-weight-bold js-scroll-trigger" href="#topic-list">페이지 상단으로</a>
                     <a class="topic-content pl-3 font-weight-bold" href="{{ topic.url }}">기사 원문 보기</a>
                 </div>
+                {% if not forloop.last %}
+                    <hr>
+                {% endif %}
             {% endfor %}
         </section><!-- /Topics -->
         <script>
-            location.href='#topics';
+            location.href='#topic-list';
         </script>
     {% endif %}
 {% endblock %}
