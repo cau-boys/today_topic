@@ -24,6 +24,11 @@ def get_topics(count, category):
         topic['title'] = docu['title']
         topic['content'] = docu['content']
         topic['url'] = docu['orgUrl']
+        date = docu['date']
+        date = date[0:4] + '-' + date[4:6]+'-' + date[6:8]+' '\
+            + date[8:10] + ':' + date[10:12]
+        topic['date'] = date
+
         topics.append(topic)
 
     return topics
