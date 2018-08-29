@@ -105,7 +105,7 @@
                 <div class="topic">
                     <div class="topic-title">{{ topic.title }}</div>
                     <div class="topic-content pl-2 pb-3">{{ topic.date }}</div>
-                    <div class="topic-content">{{ topic.content }}</div>
+                    <div class="topic-content">{{ topic.content_html | safe }}</div>
                     <br>
                     <a class="topic-content pl-3 font-weight-bold js-scroll-trigger" href="#page-top">페이지 상단으로</a>
                     <a class="topic-content pl-3 font-weight-bold" href="{{ topic.url }}">기사 원문 보기</a>
