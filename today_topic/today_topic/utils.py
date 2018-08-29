@@ -21,11 +21,12 @@ def get_topics(count, category):
     topics = list()
     for docu in docus:
         topic = {}
-        topic['title'] = docu['title']
-        topic['content'] = docu['content']
-        topic['url'] = docu['orgUrl']
-        date = docu['date']
-        date = date[0:4] + '-' + date[4:6]+'-' + date[6:8]+' '\
+        topic['title'] = docu['title']              # 기사 제목
+        topic['content'] = docu['content']          # 기사 본문
+        topic['content_html'] = docu['pub_html']    # 기사 본문 코드
+        topic['url'] = docu['orgUrl']               # 기사 원본 링크
+        date = docu['date']                         # 기사 발행일
+        date = date[0:4] + '-' + date[4:6] + '-' + date[6:8] + ' ' \
             + date[8:10] + ':' + date[10:12]
         topic['date'] = date
 
