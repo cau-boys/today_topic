@@ -41,7 +41,7 @@ def message(request):
     topics_for_response = trim_topics(topics)
 
     return JsonResponse({
-        'message': {topics_for_response},
+        'message': topics_for_response,
         'keyboard': {
             'type': 'buttons',
             'buttons': ['모든토픽', '엔터테이먼트', '정치', '경제', '사회', 'IT', '세계']
