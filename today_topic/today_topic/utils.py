@@ -40,13 +40,13 @@ def trim_topics(topics):
     response_data = '인공지능기반 실시간 트랜드 TOP 3'
     # 먼저 제목리스트를 보여줌
     for topic in topics:
-        response_data + topic['title'] + '\n\n'
+        response_data += topic['title'] + '\n\n'
 
-    response_data + '————————————————'
+    response_data += '————————————————'
 
     for topic in topics:
-        response_data + topic['title'] + '\n\n'
-        response_data + topic['content'] + '\n\n'
-        response_data + '...............................................................................'
+        response_data += topic['title'] + '\n\n'
+        response_data += topic['content'] + '\n\n'
+        response_data += '...............................................................................'
 
     return response_data
