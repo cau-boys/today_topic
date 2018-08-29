@@ -23,6 +23,7 @@ def get_topics(count, category):
         topic = {}
         topic['title'] = docu['title']
         topic['content'] = docu['content']
+        topic['url'] = docu['orgUrl']
         topics.append(topic)
 
     return topics
