@@ -37,16 +37,29 @@ def get_topics(count, category):
 
 # trim topic string
 def trim_topics(topics):
-    response_data = '인공지능기반 실시간 트랜드 TOP 3'
+    response_data = '인공지능기반 실시간 트랜드 TOP 5\n\n'
     # 먼저 제목리스트를 보여줌
     for topic in topics:
-        response_data += topic['title'] + '\n\n'
-
-    response_data += '————————————————'
-
-    for topic in topics:
-        response_data += topic['title'] + '\n\n'
-        response_data += topic['content'] + '\n\n'
-        response_data += '...............................................................................'
+        response_data += topic['title'] + '\n'
+        
+        response_data += get_short_url(topic['url']) + '\n\n'
 
     return response_data
+
+def get_short_url(long_url):
+    # json request
+    url = 'http://surl.kr/Api/create.php' 
+    params = {
+        'type': 'json',
+        'longUrl': long_url
+    }
+    res = requests.get(url, params=params)
+    
+     # convert json to dictionary
+    res_data = json.loads(res.text)
+    if res_data['status'] == 'success':
+        short_url = res_data['shortUrl']
+    else:
+        short_url = res_data['longUrl']
+    print(res_data) 
+    return short_url
