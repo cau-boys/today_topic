@@ -20,16 +20,17 @@ def get_topics(count, category):
     # get topic list
     topics = list()
     for docu in docus:
-        topic = {}
-        topic['title'] = docu['title']              # 기사 제목
-        topic['content'] = docu['content']          # 기사 본문
-        topic['content_html'] = docu['pub_html']    # 기사 본문 코드
-        topic['url'] = docu['orgUrl']               # 기사 원본 링크
-        date = docu['date']                         # 기사 발행일
+        date = docu['date']  # 기사 발행일
         date = date[0:4] + '-' + date[4:6] + '-' + date[6:8] + ' ' \
             + date[8:10] + ':' + date[10:12]
-        topic['date'] = date
 
+        topic = {
+            'title': docu['title'],
+            'content': docu['content'],
+            'content_html': docu['pub_html'],
+            'url': docu['orgUrl'],
+            'date': date
+        }
         topics.append(topic)
 
     return topics
@@ -41,7 +42,6 @@ def trim_topics(topics):
     # 먼저 제목리스트를 보여줌
     for topic in topics:
         response_data += topic['title'] + '\n'
-        
         response_data += get_short_url(topic['url']) + '\n\n'
 
     return response_data
