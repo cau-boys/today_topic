@@ -1,3 +1,21 @@
+// request_btn instance
+new Vue({
+    el: '#request_btn',
+    methods: {
+        request_answer: function () {
+            $('#exampleModal').modal('toggle');
+            axios.get('https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json').
+            then(response => {
+                $('#answer').text(response.data.be1);
+                console.log(response);
+            }).catch(error => {
+                console.log(error);
+            });
+        }
+    }
+});
+
+// present current date and time
 function timer() {
     let today = new Date();
 

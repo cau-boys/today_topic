@@ -24,20 +24,6 @@ section{
     padding-bottom: 5rem;
 }
 
-/* result card */
-#result_card {
-    min-width: 100%
-}
-
-#result_text {
-    font-size: 2rem;
-    padding-bottom: 1rem;
-}
-
-#result_card a{
-    text-decoration: none !important;
-}
-
 /* topic-list */
 #topic-list {
     margin: 5rem 7rem 0;

@@ -107,22 +107,12 @@
                 <div class="input-group input-group-lg">
                     <input type="text" class="form-control" placeholder="이번 아시안게임 축구 우승 팀은 어느 나라야?"
                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <!-- Answer Request Button -->
                     <div class="input-group-append">
-                        <a class="btn btn-primary" data-toggle="collapse" href="#result_card"
-                           role="button" aria-expanded="false" aria-controls="result_card">
+                        <button class="btn btn-primary" id="request_btn" v-on:click="request_answer">
                             물어보기
-                        </a>
-                    </div>
-                </div>
-                <div id="result_card" class=" collapse mt-3">
-                    <div class="card card-body">
-                        <div id="result_text">
-                            대한민국
-                        </div>
-                        <a href="#">
-                            출처 기사
-                        </a>
-                    </div>
+                        </button>
+                    </div><!-- Answer Request Button -->
                 </div>
             </div>
         </div>
@@ -159,10 +149,39 @@
             location.href='#topic-list';
         </script>
     {% endif %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">검색 결과</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body" id="answer">
+                    검색중 ...
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary">출처 기사로 이동하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block js %}
     {{ block.super }}
     {% load staticfiles %}
+    <!-- Vue.js && axios -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Custom scripts for this template -->
     <script src="{% static "js/index.js" %}"></script>
 {% endblock %}
