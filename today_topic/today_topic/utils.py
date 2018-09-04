@@ -20,16 +20,17 @@ def get_topics(count, category):
     # get topic list
     topics = list()
     for docu in docus:
-        topic = {}
-        topic['title'] = docu['title']              # 기사 제목
-        topic['content'] = docu['content']          # 기사 본문
-        topic['content_html'] = docu['pub_html']    # 기사 본문 코드
-        topic['url'] = docu['orgUrl']               # 기사 원본 링크
-        date = docu['date']                         # 기사 발행일
+        date = docu['date']  # 기사 발행일
         date = date[0:4] + '-' + date[4:6] + '-' + date[6:8] + ' ' \
             + date[8:10] + ':' + date[10:12]
-        topic['date'] = date
 
+        topic = {
+            'title': docu['title'],
+            'content': docu['content'],
+            'content_html': docu['pub_html'],
+            'url': docu['orgUrl'],
+            'date': date
+        }
         topics.append(topic)
 
     return topics
@@ -41,25 +42,68 @@ def trim_topics(topics):
     # 먼저 제목리스트를 보여줌
     for topic in topics:
         response_data += topic['title'] + '\n'
-        
         response_data += get_short_url(topic['url']) + '\n\n'
 
     return response_data
 
+
+# convert long url to short url
 def get_short_url(long_url):
     # json request
-    url = 'http://surl.kr/Api/create.php' 
+    url = 'http://surl.kr/Api/create.php'
     params = {
         'type': 'json',
         'longUrl': long_url
     }
     res = requests.get(url, params=params)
-    
-     # convert json to dictionary
+
+    # convert json to dictionary
     res_data = json.loads(res.text)
     if res_data['status'] == 'success':
         short_url = res_data['shortUrl']
     else:
         short_url = res_data['longUrl']
-    print(res_data) 
+    print(res_data)
     return short_url
+
+
+# find an answer of user's question
+def find_answer(question):
+    accuracy = 0.95  # 90 % accuracy
+    category_list = ['entertainment', 'politics', 'economics',
+                     'society', 'it', 'world']
+    fail_msg = {
+        'content': '해당 내용을 찾을 수 없습니다.',
+        'link': '#',
+    }
+
+    # request topic_list for all categories
+    for category in category_list:
+        topics = get_topics(30, category)
+
+        # find an answer in topics
+        for topic in topics:
+            url = 'http://api.datamixi.com/datamixiApi/mrcQa'
+            params = {
+                'key': '3082028134077943630',
+                'paragraph': topic['content'],
+                'question': question
+            }
+            res = requests.get(url, params=params)
+
+            try:
+                # convert json to dictionary
+                response = json.loads(res.text)['return_object']
+            except:
+                return fail_msg
+
+            score = float(response['score'])
+            if score > accuracy:
+                answer = {
+                    'content': response['answer'],
+                    'link': topic['url'],
+                }
+                return answer
+
+    # if failed to find an answer
+    return fail_msg
