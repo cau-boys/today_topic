@@ -67,11 +67,15 @@ def get_short_url(long_url):
     return short_url
 
 
-# get an answer of user's question
-def get_answer(question):
-    accuracy = 0.9  # 90 % accuracy
+# find an answer of user's question
+def find_answer(question):
+    accuracy = 0.95  # 90 % accuracy
     category_list = ['entertainment', 'politics', 'economics',
                      'society', 'it', 'world']
+    fail_msg = {
+        'content': '해당 내용을 찾을 수 없습니다.',
+        'link': '#',
+    }
 
     # request topic_list for all categories
     for category in category_list:
@@ -87,7 +91,19 @@ def get_answer(question):
             }
             res = requests.get(url, params=params)
 
-            # convert json to dictionary
-            result = json.loads(res.text)
-            if result['score'] > accuracy:
-                return result['answer']
+            try:
+                # convert json to dictionary
+                response = json.loads(res.text)['return_object']
+            except:
+                return fail_msg
+
+            score = float(response['score'])
+            if score > accuracy:
+                answer = {
+                    'content': response['answer'],
+                    'link': topic['url'],
+                }
+                return answer
+
+    # if failed to find an answer
+    return fail_msg
