@@ -30,6 +30,7 @@ section{
     padding-top: 5rem;
 }
 
+
 #topic-list-title {
     font-size: 1.1rem;
     font-weight: 700;
@@ -39,9 +40,34 @@ section{
     'Noto Color Emoji';
 }
 
+@media screen and (max-width: 768px) {
+    #topic-list-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #topic-list-title {
+        font-size: 2.5rem;
+    }
+}
+
 .topic-list-content {
     color: black;
     text-decoration: none !important;
+    font-size: 1.1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .topic-list-content {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .topic-list-content {
+        font-size: 2.5rem;
+    }
 }
 
 /* topic */
@@ -53,7 +79,6 @@ section{
 .topic {
     padding-top: 0.8rem;
     padding-bottom: 1.2rem;
-    padding-right: 5rem;
 }
 
 .topic-title{
@@ -66,8 +91,32 @@ section{
     'Noto Color Emoji';
 }
 
+@media screen and (max-width: 768px) {
+    .topic-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .topic-title {
+        font-size: 2.5rem;
+    }
+}
+
 .topic-content{
     font-size: 1.1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .topic-content {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .topic-content {
+        font-size: 2.5rem;
+    }
 }
 
 .topic-content img {
