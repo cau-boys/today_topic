@@ -97,6 +97,28 @@
         </div>
     </section><!-- /Category -->
 
+    <!-- Question -->
+    <section id="question">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-heading text-uppercase">인공지능에게 물어보기</h2>
+                </div>
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" id="question_text"
+                           placeholder="이번 아시안게임 축구 우승 팀은 어느 나라야?"
+                           aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <!-- Answer Request Button -->
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" id="request_btn" v-on:click="request_answer">
+                            물어보기
+                        </button>
+                    </div><!-- Answer Request Button -->
+                </div>
+            </div>
+        </div>
+    </section><!-- Question -->
+
     {% if topics is not None %}
         <!-- Topic list -->
         <section id="topic-list">
@@ -128,10 +150,39 @@
             location.href='#topic-list';
         </script>
     {% endif %}
+
+    <!-- Answer Modal -->
+    <div class="modal fade" id="answer_modal" tabindex="-1" role="dialog"
+         aria-labelledby="answer_modal_label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="answer_modal_label">검색 결과</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body" id="answer">
+                    검색중 ...
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary" id="answer_link" onclick="">출처 기사로 이동하기</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- Answer Modal -->
 {% endblock %}
 
 {% block js %}
     {{ block.super }}
     {% load staticfiles %}
+    <!-- Vue.js && axios -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Custom scripts for this template -->
     <script src="{% static "js/index.js" %}"></script>
 {% endblock %}
