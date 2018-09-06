@@ -1,50 +1,62 @@
 import json
 import requests
 
+from django.forms.models import model_to_dict
+from today_topic.models import Topic
 
-# get topic lists
-def get_topics(count, category):
-    # json request
-    url = 'http://api.datamixi.com/datamixiApi/topictoday'
-    params = {
-        'key': '3082028134077943630',
-        'count': count,
-        'category': category
-    }
-    res = requests.get(url, params=params)
 
-    # convert json to dictionary
-    res_data = json.loads(res.text)
-    docus = res_data['document']
+category_list = ['all', 'entertainment', 'politics', 'economics', 'society', 'it', 'world']
 
-    # get topic list
-    topics = list()
-    for docu in docus:
-        date = docu['date']  # 기사 발행일
-        date = date[0:4] + '-' + date[4:6] + '-' + date[6:8] + ' ' \
-            + date[8:10] + ':' + date[10:12]
 
-        topic = {
-            'title': docu['title'],
-            'content': docu['content'],
-            'content_html': docu['pub_html'],
-            'url': docu['orgUrl'],
-            'date': date
+# update topic list
+def set_topics():
+    # delete all topics
+    queryset = Topic.objects.all()
+    queryset.delete()
+
+    # request topic_list for all categories
+    for category in category_list:
+        url = 'http://api.datamixi.com/datamixiApi/topictoday'
+        params = {
+            'key': '3082028134077943630',
+            'count': 30,
+            'category': category
         }
+        res = requests.get(url, params=params)
+
+        # convert json to dictionary
+        res_data = json.loads(res.text)
+        docus = res_data['document']
+
+        # insert new topics
+        for docu in docus:
+            # adjust data format
+            date = docu['date']  # 기사 발행일
+            date = date[0:4] + '-' + date[4:6] + '-' + date[6:8] + ' ' \
+                   + date[8:10] + ':' + date[10:12]
+            docu['orgUrl'] = get_short_url(docu['orgUrl'])
+
+            Topic(
+                title=docu['title'],
+                category=category,
+                rank=docu['rank'],
+                content=docu['content'],
+                content_html=docu['pub_html'],
+                url=docu['orgUrl'],
+                date=date,
+            ).save()
+
+
+# get topic list
+def get_topics(count, category):
+    topic_objects = Topic.objects.filter(category=category)[:count]
+    topics = list()
+
+    for topic_object in topic_objects:
+        topic = model_to_dict(topic_object)
         topics.append(topic)
 
     return topics
-
-
-# trim topic string
-def trim_topics(topics):
-    response_data = '인공지능기반 실시간 트랜드 TOP 5\n\n'
-    # 먼저 제목리스트를 보여줌
-    for topic in topics:
-        response_data += topic['title'] + '\n'
-        response_data += get_short_url(topic['url']) + '\n\n'
-
-    return response_data
 
 
 # convert long url to short url
@@ -59,19 +71,13 @@ def get_short_url(long_url):
 
     # convert json to dictionary
     res_data = json.loads(res.text)
-    if res_data['status'] == 'success':
-        short_url = res_data['shortUrl']
-    else:
-        short_url = res_data['longUrl']
-    print(res_data)
-    return short_url
+
+    return res_data['shortUrl'] if res_data['status'] == 'success' else res_data['longUrl']
 
 
 # find an answer of user's question
 def find_answer(question):
     accuracy = 0.95  # 90 % accuracy
-    category_list = ['entertainment', 'politics', 'economics',
-                     'society', 'it', 'world']
     fail_msg = {
         'content': '해당 내용을 찾을 수 없습니다.',
         'link': '#',
