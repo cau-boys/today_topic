@@ -9,8 +9,7 @@ new Vue({
 
             // json request
             const question = $('#question_text')[0].value;
-            axios.get('http://127.0.0.1:8000/site/qna/', {
-                // origin link http://13.209.97.110/site/qna
+            axios.get('http://13.209.97.110/site/qna', {
                 params: { question: question }
             }).
             then(response => {
