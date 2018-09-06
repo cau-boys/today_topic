@@ -123,6 +123,18 @@ section{
     width:40%;
 }
 
+@media screen and (max-width: 768px) {
+    .topic-content img {
+        width:90%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .topic-content img {
+        width:90%;
+    }
+}
+
 /* plus-friend */
 #plus-friend-modal-box{
     width: 25rem;
