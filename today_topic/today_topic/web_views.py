@@ -1,6 +1,5 @@
 from django.views.generic.base import TemplateView
-from today_topic.utils import get_topics, find_answer
-from django.http import JsonResponse
+from today_topic.utils import get_topics
 
 
 class IndexView(TemplateView):
@@ -12,10 +11,3 @@ class IndexView(TemplateView):
         if category is not None:
             context['topics'] = get_topics(8, category)
         return context
-
-
-# get an answer of user's question
-def get_answer(request):
-    question = request.GET['question']
-    answer = find_answer(question)
-    return JsonResponse(answer)
