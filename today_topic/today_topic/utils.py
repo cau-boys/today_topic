@@ -19,7 +19,7 @@ def set_topics():
         url = 'http://api.datamixi.com/datamixiApi/topictoday'
         params = {
             'key': '3082028134077943630',
-            'count': 30,
+            'count': 8,
             'category': category
         }
         res = requests.get(url, params=params)
@@ -85,7 +85,7 @@ def find_answer(question):
 
     # request topic_list for all categories
     for category in category_list:
-        topics = get_topics(30, category)
+        topics = get_topics(8, category)
 
         # find an answer in topics
         for topic in topics:
