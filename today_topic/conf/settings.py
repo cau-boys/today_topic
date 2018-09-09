@@ -131,3 +131,22 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+import json
+if 'VCAP_SERVICES' in os.environ:
+    vcap_services = json.loads(os.environ['VCAP_SERVICES'])
+
+    if 'Mysql-DB' in vcap_services:
+        mysql_srv = vcap_services['Mysql-DB'][0]
+        mysql_cred = mysql_srv['credentials']
+
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': mysql_cred['name'],
+                'USER': mysql_cred['username'],
+                'PASSWORD': mysql_cred['password'],
+                'HOST': mysql_cred['hostname'],
+                'PORT': mysql_cred['port'],
+            },
+        }
