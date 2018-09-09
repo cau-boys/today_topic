@@ -1,4 +1,5 @@
 from django.http.response import JsonResponse
+from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from today_topic.utils import get_topics
 
@@ -43,7 +44,8 @@ def message(request):
             'text': topics_for_response,
             "message_button": {
                 "label": "웹으로 보기",
-                "url": "http://13.209.97.110/site/"}
+                "url": reverse('site:index')
+            }
         },
         'keyboard': {
             'type': 'buttons',
