@@ -6,4 +6,4 @@
 ## 사용하기
 [오늘의 토픽 플러스 친구 홈 바로가기](http://pf.kakao.com/_EFwqj)
 
-[오늘의 토픽 사이트 바로가기](http://13.209.97.110/site/)
+[오늘의 토픽 사이트 바로가기](http://topic.cupjoo.kro.kr)
