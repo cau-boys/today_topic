@@ -43,7 +43,7 @@ def message(request):
             'text': topics_for_response,
             "message_button": {
                 "label": "웹으로 보기",
-                "url": "http://13.209.97.110/site/"}
+                "url": "http://13.209.97.110:8000/site/"}
         },
         'keyboard': {
             'type': 'buttons',
