@@ -8,8 +8,11 @@
 
 # Kakao Chatbot
 <img width="500px" alt="Screen Shot 2020-10-10 at 11 48 16 PM" src="https://user-images.githubusercontent.com/38303729/95658163-5c14f300-0b53-11eb-89d6-794133fac494.png" style="float:right;">
+
 Today_topic Server installation
+
 ====================================
+
 We also support Windows OS, but we recommend Ubuntu OS.
 
 Set up python
